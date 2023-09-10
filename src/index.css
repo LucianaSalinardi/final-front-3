@@ -1,0 +1,296 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.favButton {
+  background-color: rgba(12, 71, 139, 0.801);
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  width: 75%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favButton:hover {
+  background-color: rgb(80, 144, 240);
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+nav {
+  display: flex;
+  width: 100vw;
+  height: 120px;
+  justify-content: space-around;
+  padding: 2rem;
+  background-color: rgb(223, 220, 220, 0.5);
+  flex-direction: row-reverse;
+  box-sizing: border-box;
+}
+
+.logo {
+  width: 71px;
+  height: 65px;
+  display: flex;
+  order: 1;
+}
+
+.logo span {
+  align-self: center;
+  margin-left: 10px;
+  font-weight: 500;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 20px;
+}
+
+.nav-button {
+  order: -1;
+  background-color: rgba(12, 71, 139, 0.801);
+  border-radius: 15px;
+  font-size: 15px;
+  border-color: none;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  height: 40px;
+  align-self: center;
+  cursor: pointer;
+  border: 0.5px solid rgb(136, 136, 136);
+  display: flex;
+  align-items: center;
+}
+
+nav button img{
+  width: 33px;
+  height: 33px;
+  margin-left: 5px;
+}
+
+.nav-button:hover {
+  border: 0.5px solid rgb(136, 136, 136);
+  background-color: rgb(80, 144, 240);
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  margin: 5px;
+  cursor: pointer;
+}
+a:hover {
+  color: rgb(80, 144, 240);
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+li {
+  margin-left: 15px;
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5rem;
+  position: relative;
+  bottom: 0;
+  width: 100vw;
+  height: 9vw;
+  margin-top: 6rem;
+  background-color: rgb(223, 220, 220, 0.5);
+  align-items: center;
+  box-sizing: border-box;
+}
+
+footer > img {
+  width: 200px;
+  margin: 0;
+}
+footer > p {
+  margin: 0;
+  padding-top: 0.7rem;
+}
+
+footer img {
+  margin-left: 60px;
+}
+
+footer p {
+  font-weight: 400;
+}
+
+.iconos-redes {
+  display: flex;
+  height: 25px;
+  margin-right: 50px;
+}
+
+.iconos-redes img {
+  margin-left: 13px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  height: 165px;
+  margin: 0 auto;
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+
+form button {
+  border-radius: 15px;
+  margin-top: 9px;
+  width: 80px;
+  border: 0.5px solid rgb(70, 67, 67);
+  min-height: 40px;
+  cursor: pointer;
+  background-color: rgba(12, 71, 139, 0.801);
+  color: white;
+}
+
+form button:hover {
+  background-color: rgb(80, 144, 240);
+}
+
+form input {
+  border: 0.5px solid rgb(104, 102, 102);
+  border-radius: 10px;
+  min-height: 30px;
+  width: 220px;
+  margin-bottom: 15px;
+}
+
+form label {
+  font-weight: 400;
+}
+
+.success-msg {
+  color: rgb(13, 189, 13);
+  margin-top: 25px;
+}
+
+.error-msg {
+  color: rgb(231, 57, 57);
+  margin-top: 9px;
+}
+
+.details-dentist{
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+  
+}
+
+.img-dentist-details img{
+  width: 120px;
+  height: 120px;
+}
+
+.align-details{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 200px;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  border: 0.5px solid rgb(136, 136, 136);
+}
+
+.card img {
+  width: 160px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.card button img {
+  width: 20px;
+  height: 20px;
+  
+}
+
+.card:hover {
+  border: 0.5px solid rgb(206, 217, 142);
+}
+
+.card-grid {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+  width: 90vw;
+  height: auto;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  display: table;
+  border: 1px solid #ccc;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.dark {
+  background-color: #12121296;
+  color: white;
+}
+.dark a {
+  color: white;
+}
