@@ -14,21 +14,32 @@ export const favsReducer = (state, action) => {
         ...state,
         favs: newFavs,
       };
+    case "REMOVE_FROM_FAVS":
+      const removeDentist = (id) => {
+        return state.favs.filter((dentist) => dentist.id !== id);
+      };
+      const actualDentists = removeDentist(action.payload.id);
+      localStorage.setItem("favs", JSON.stringify(actualDentists));
+      return {
+        ...state,
+        favs: actualDentists,
+      };
     default:
       return state;
   }
 };
 
 const Card = ({ name, username, id }) => {
-
-
   const [state, dispatch] = useReducer(favsReducer, initialStateFavs);
 
   const addFav = () => {
     dispatch({ type: "ADD_TO_FAVS", payload: { name, username, id } });
   };
 
-  console.log(state);
+  const removeFav = () => {
+    dispatch({ type: "REMOVE_FROM_FAVS", payload: { id } });
+  };
+
   return (
     <div className="card">
       <Link to={`/dentist/${id}`}>
@@ -36,13 +47,16 @@ const Card = ({ name, username, id }) => {
         <h3>{name}</h3>
         <p>{username}</p>
       </Link>
-      <button onClick={addFav} className="favButton">
-        Add to fav <img src="./images/fav.png" alt="fav" />
-      </button>
+      <div className="align-buttons">
+        <button onClick={addFav} className="favButton">
+          Add <img src="./images/fav.png" alt="add fav" />
+        </button>
+        <button onClick={removeFav} className="removefavButton">
+          Remove <img src="./images/remove.png" alt="remove fav" />
+        </button>
+      </div>
     </div>
   );
 };
 
-
 export default Card;
-

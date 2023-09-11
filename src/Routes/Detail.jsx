@@ -13,7 +13,7 @@ const Detail = () => {
       handleDentistById(data);
     });
   }, []);
-  
+
   return (
     <Layout>
       <h1>Details Dentist </h1>

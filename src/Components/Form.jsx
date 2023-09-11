@@ -35,14 +35,14 @@ const Form = () => {
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
-        <label for="name">Full name</label>
+        <label htmlFor="name">Full name</label>
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={onChangeName}
         />
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           type="text"
           placeholder="Email"
