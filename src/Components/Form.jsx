@@ -9,6 +9,11 @@ const Form = () => {
   const onChangeName = (e) => setName(e.target.value);
   const onChangeEmail = (e) => setEmail(e.target.value);
 
+  const words = name.split(" ");
+  const capitalizedWords = words.map((word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  });
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
@@ -20,8 +25,10 @@ const Form = () => {
     }
 
     if (name.length > 5 && regexEmail.test(email)) {
+      const fullName = capitalizedWords.join(" ");
+
       setMessageSuccess(
-        `Gracias ${name}, te contactaremos cuanto antes via Email`
+        `Gracias ${fullName}, te contactaremos cuanto antes via Email`
       );
       setName("");
       setEmail("");

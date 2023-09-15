@@ -1,43 +1,31 @@
-import React, { useReducer } from "react";
+import React, { useContext} from "react";
 import { Link } from "react-router-dom";
+import { ContextGlobal } from "./utils/global.context";
 
-export const initialStateFavs = {
-  favs: JSON.parse(localStorage.getItem("favs")),
-};
-
-export const favsReducer = (state, action) => {
-  switch (action.type) {
-    case "ADD_TO_FAVS":
-      const newFavs = [...state.favs, action.payload];
-      localStorage.setItem("favs", JSON.stringify(newFavs));
-      return {
-        ...state,
-        favs: newFavs,
-      };
-    case "REMOVE_FROM_FAVS":
-      const removeDentist = (id) => {
-        return state.favs.filter((dentist) => dentist.id !== id);
-      };
-      const actualDentists = removeDentist(action.payload.id);
-      localStorage.setItem("favs", JSON.stringify(actualDentists));
-      return {
-        ...state,
-        favs: actualDentists,
-      };
-    default:
-      return state;
-  }
-};
 
 const Card = ({ name, username, id }) => {
-  const [state, dispatch] = useReducer(favsReducer, initialStateFavs);
+
+  const { stateFavs, handleAddFavs, handleRemoveFavs } = useContext(ContextGlobal);
 
   const addFav = () => {
-    dispatch({ type: "ADD_TO_FAVS", payload: { name, username, id } });
+
+    if (!stateFavs.favs.some((fav) => fav.id === id)) {
+      const fav = {
+        name,
+        username,
+        id,
+    };
+    const arr = [...stateFavs.favs, fav];
+    handleAddFavs(arr);
+    
+    }
   };
 
   const removeFav = () => {
-    dispatch({ type: "REMOVE_FROM_FAVS", payload: { id } });
+    if (stateFavs.favs.some((fav) => fav.id === id)) {
+      const newFavs = stateFavs.favs.filter((fav) => fav.id !== id);
+      handleRemoveFavs(newFavs);
+    }
   };
 
   return (
@@ -48,7 +36,7 @@ const Card = ({ name, username, id }) => {
         <p>{username}</p>
       </Link>
       <div className="align-buttons">
-        <button onClick={addFav} className="favButton">
+        <button onClick={addFav} className="favButton" >
           Add <img src="./images/fav.png" alt="add fav" />
         </button>
         <button onClick={removeFav} className="removefavButton">

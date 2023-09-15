@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from "react";
-import Layout from "../Components/Layout";
 import { useParams } from "react-router-dom";
 import { ContextGlobal } from "../Components/utils/global.context";
 
@@ -15,7 +14,7 @@ const Detail = () => {
   }, []);
 
   return (
-    <Layout>
+    <>
       <h1>Details Dentist </h1>
       <div className="align-details">
         <div className="details-dentist">
@@ -31,7 +30,7 @@ const Detail = () => {
           />
         </div>
       </div>
-    </Layout>
+      </>
   );
 };
 

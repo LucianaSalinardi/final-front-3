@@ -1,4 +1,4 @@
-import { createContext, useReducer, useMemo } from "react";
+import { createContext, useReducer, useMemo, useEffect} from "react";
 
 export const ContextGlobal = createContext();
 
@@ -7,6 +7,29 @@ export const initialState = {
   data: [],
   dentist: {},
 };
+
+export const initialStateFavs = {
+    favs: JSON.parse(localStorage.getItem("favs")) || [],
+  };
+
+export const favsReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_TO_FAVS":
+        return {
+          ...state,
+          favs: action.payload,
+        };
+      
+    case "REMOVE_FROM_FAVS":
+      return {
+        ...state,
+        favs: action.payload,
+      };
+    default:
+      return state;
+  }
+}
+
 
 export const contextReducer = (state, action) => {
   switch (action.type) {
@@ -33,6 +56,16 @@ export const contextReducer = (state, action) => {
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(contextReducer, initialState);
 
+  const [stateFavs, dispatchFavs] = useReducer(favsReducer, initialStateFavs);
+
+  const handleAddFavs = (data) => {
+    dispatchFavs({ type: "ADD_TO_FAVS", payload: data });
+  };
+
+  const handleRemoveFavs = (data) => {
+    dispatchFavs({ type: "REMOVE_FROM_FAVS", payload: data });
+  };
+
   const handleDentists = (data) => {
     dispatch({ type: "GET_DENTISTS", payload: data });
   };
@@ -44,6 +77,12 @@ export const ContextProvider = ({ children }) => {
   const handleTheme = () => {
     dispatch({ type: "CHANGE_THEME" });
   };
+
+  useEffect(() => {
+    localStorage.setItem("favs", JSON.stringify(stateFavs.favs));
+}, [stateFavs.favs]);
+
+console.log(stateFavs)
 
   const getDentists = useMemo(() => {
     return () => {
@@ -57,6 +96,7 @@ export const ContextProvider = ({ children }) => {
         .catch((error) => {
           throw new Error(error);
         });
+
     };
   }, []);
 
@@ -86,6 +126,9 @@ export const ContextProvider = ({ children }) => {
         handleDentistById,
         handleTheme,
         state,
+        stateFavs,
+        handleAddFavs,
+        handleRemoveFavs
       }}
     >
       {children}

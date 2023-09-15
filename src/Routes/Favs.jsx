@@ -1,27 +1,27 @@
-import React, { useReducer } from "react";
-import { favsReducer, initialStateFavs } from "../Components/Card";
+import React, { useContext } from "react";
 import Card from "../Components/Card";
-import Layout from "../Components/Layout";
+import { ContextGlobal } from "../Components/utils/global.context";
 
 const Favs = () => {
-  const [state, dispatch] = useReducer(favsReducer, initialStateFavs);
-
+  const { stateFavs } = useContext(ContextGlobal);
   return (
-    <Layout>
+    <>
       <h1>Dentists Favs</h1>
       <div className="card-grid">
-        {state.favs
-          ? state.favs.map((card) => (
-              <Card
-                key={card.id}
-                name={card.name}
-                username={card.username}
-                id={card.id}
-              />
-            ))
-          : null}
+        {stateFavs.favs.length !== 0 ? (
+          stateFavs.favs.map((card) => (
+            <Card
+              key={card.id}
+              name={card.name}
+              username={card.username}
+              id={card.id}
+            />
+          ))
+        ) : (
+          <h3>There are no dentists added to favs</h3>
+        )}
       </div>
-    </Layout>
+    </>
   );
 };
 

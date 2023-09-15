@@ -125,14 +125,12 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 2.5rem;
-  position: relative;
-  bottom: 0;
   width: 100vw;
-  height: 9vw;
-  margin-top: 6rem;
+  height: 200px;
   background-color: rgb(223, 220, 220, 0.5);
   align-items: center;
   box-sizing: border-box;
+  margin-top: 25%;
 }
 
 footer > img {
