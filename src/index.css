@@ -24,11 +24,12 @@ code {
   margin-left: 2px;
   padding: 11px;
   border: none;
-  width: 44%;
+  width: 100%;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items:center;
   height: 40px;
+  
 }
 
 .favButton:hover,
@@ -130,7 +131,7 @@ footer {
   background-color: rgb(223, 220, 220, 0.5);
   align-items: center;
   box-sizing: border-box;
-  margin-top: 25%;
+  margin-top: 18%;
 }
 
 footer > img {

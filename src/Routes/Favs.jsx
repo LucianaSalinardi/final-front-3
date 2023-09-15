@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Card from "../Components/Card";
+import CardFavs from "../Components/CardFavs";
 import { ContextGlobal } from "../Components/utils/global.context";
 
 const Favs = () => {
@@ -10,7 +10,7 @@ const Favs = () => {
       <div className="card-grid">
         {stateFavs.favs.length !== 0 ? (
           stateFavs.favs.map((card) => (
-            <Card
+            <CardFavs
               key={card.id}
               name={card.name}
               username={card.username}

@@ -1,4 +1,4 @@
-import { createContext, useReducer, useMemo, useEffect} from "react";
+import { createContext, useReducer, useMemo, useEffect } from "react";
 
 export const ContextGlobal = createContext();
 
@@ -9,17 +9,17 @@ export const initialState = {
 };
 
 export const initialStateFavs = {
-    favs: JSON.parse(localStorage.getItem("favs")) || [],
-  };
+  favs: JSON.parse(localStorage.getItem("favs")) || [],
+};
 
 export const favsReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_FAVS":
-        return {
-          ...state,
-          favs: action.payload,
-        };
-      
+      return {
+        ...state,
+        favs: action.payload,
+      };
+
     case "REMOVE_FROM_FAVS":
       return {
         ...state,
@@ -28,8 +28,7 @@ export const favsReducer = (state, action) => {
     default:
       return state;
   }
-}
-
+};
 
 export const contextReducer = (state, action) => {
   switch (action.type) {
@@ -80,9 +79,7 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("favs", JSON.stringify(stateFavs.favs));
-}, [stateFavs.favs]);
-
-console.log(stateFavs)
+  }, [stateFavs.favs]);
 
   const getDentists = useMemo(() => {
     return () => {
@@ -96,7 +93,6 @@ console.log(stateFavs)
         .catch((error) => {
           throw new Error(error);
         });
-
     };
   }, []);
 
@@ -128,7 +124,7 @@ console.log(stateFavs)
         state,
         stateFavs,
         handleAddFavs,
-        handleRemoveFavs
+        handleRemoveFavs,
       }}
     >
       {children}
